@@ -6,6 +6,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    // Include EmailJS SDK
+(function () {
+  emailjs.init('96U1EnA_8LsSvgwqN'); // Replace with your EmailJS public key
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  emailjs.send('service_u9lsmgp', 'template_kpdwzwf', {
+    from_name: document.getElementById('name').value,
+    reply_to: document.getElementById('email').value,
+    message: document.getElementById('message').value,
+  })
+  .then(function () {
+    document.getElementById('success-message').style.display = 'block';
+    document.getElementById('contact-form').reset();
+  }, function (error) {
+    alert('Failed to send message. Please try again later.');
+    console.error('EmailJS Error:', error);
+  });
+});
 
     // Simple form validation
     const name = form.elements['name'].value.trim();

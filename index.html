@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Future Inc. is a software development company founded by Peter Anyangbe Asher. Learn more about our services, skills, and how to contact us." />
-  <meta name="keywords" content="Future Inc, Peter Asher, software developer, portfolio, HTML, CSS, JavaScript" />
+  <meta name="description" content="Future Inc. – Official Website of Peter Anyangbe Asher" />
   <meta name="author" content="Peter Anyangbe Asher" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <title>Future Inc.</title>
+  <title>Future Inc. – Software Solutions</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- EmailJS SDK v3 -->
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
 </head>
 <body>
   <header>
     <img src="logo.png" alt="Future Inc. Logo" class="logo" />
+    <h1>Future Inc.</h1>
+    <p class="tagline">Innovating Tomorrow, Today</p>
     <nav>
       <ul>
         <li><a href="#about">About</a></li>
@@ -22,57 +26,45 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to Future Inc.</h1>
-    <p>Innovating Tomorrow, Today.</p>
-  </section>
-
   <section id="about">
     <h2>About Us</h2>
-    <p>Future Inc. is a modern software development company founded by <strong>Peter Anyangbe Asher</strong>, an experienced programmer passionate about creating tech-driven solutions that solve real-world problems.</p>
+    <p><strong>Future Inc.</strong> is a forward-thinking software development company based in Lekki, Lagos. Founded by <strong>Peter Anyangbe Asher</strong>, we specialize in innovative tech solutions, front-end and back-end development, and modern user experiences.</p>
   </section>
 
   <section id="resume">
     <h2>Resume</h2>
     <p><strong>Full Name:</strong> PETER ANYANGBE ASHER</p>
     <p><strong>Phone:</strong> 07074146794</p>
-    <p><strong>Email:</strong> PETERANYANGBEASHER.O@GMAIL.COM</p>
-    <h3>Skills:</h3>
+    <p><strong>Email:</strong> peteranyangbeasher.o@gmail.com</p>
+    <h3>Skills</h3>
     <ul>
-      <li>Front-End Development: HTML, CSS, JavaScript, Vue.js</li>
-      <li>Back-End Development: Python, SQL, PHP, Ruby, C#, C++</li>
-      <li>UI/UX Design</li>
-      <li>Data Analytics</li>
-      <li>Team Leadership</li>
-      <li>Effective Communication</li>
+      <li>Front-End: HTML, CSS, JavaScript, Vue.js</li>
+      <li>Back-End: Python, PHP, SQL, Ruby, C#, C++</li>
+      <li>UI/UX Design, Data Analytics, Team Leadership, Communication</li>
     </ul>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
+    <h2>Contact Us</h2>
     <form id="contact-form">
       <input type="text" id="name" placeholder="Your Name" required />
       <input type="email" id="email" placeholder="Your Email" required />
       <textarea id="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-
-    <p id="success-message" style="display: none; color: limegreen;">
-      Message sent successfully!
-    </p>
+    <p id="success-message" style="display: none; color: green;">Message sent successfully!</p>
   </section>
 
   <footer>
     <p>&copy; 2025 Future Inc. | CEO: Peter Anyangbe Asher</p>
   </footer>
 
-  <!-- EmailJS v4 (MODERN) -->
-  <script type="module">
-    import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+  <script>
+    (function () {
+      emailjs.init("96U1EnA_8LsSvgwqN");
+    })();
 
-    emailjs.init("96U1EnA_8LsSvgwqN"); // 🔁 Replace with your actual public key
-
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
       const form = document.getElementById("contact-form");
       const successMessage = document.getElementById("success-message");
 
@@ -88,25 +80,21 @@
           return;
         }
 
-        emailjs
-          .send("service_u9lsmgp", "template_kpdwzwf", {
-            from_name: name,
-            reply_to: email,
-            message: message,
-          })
-          .then(
-            () => {
-              successMessage.style.display = "block";
-              form.reset();
-              setTimeout(() => {
-                successMessage.style.display = "none";
-              }, 5000);
-            },
-            (error) => {
-              alert("Failed to send message. Please try again later.");
-              console.error("EmailJS Error:", error);
-            }
-          );
+        emailjs.send("service_u9lsmgp", "template_kpdwzwf", {
+          from_name: name,
+          reply_to: email,
+          message: message
+        })
+        .then(function () {
+          successMessage.style.display = "block";
+          form.reset();
+          setTimeout(() => {
+            successMessage.style.display = "none";
+          }, 5000);
+        }, function (error) {
+          alert("Failed to send message. Please try again later.");
+          console.error("EmailJS Error:", error);
+        });
       });
     });
   </script>

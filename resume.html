@@ -6,14 +6,11 @@
   <meta name="description" content="Future Inc. is a software development company founded by Peter Anyangbe Asher. Learn more about our services, skills, and how to contact us." />
   <meta name="keywords" content="Future Inc, Peter Asher, software developer, portfolio, HTML, CSS, JavaScript" />
   <meta name="author" content="Peter Anyangbe Asher" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <title>Future Inc.</title>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <header>
     <img src="logo.png" alt="Future Inc. Logo" class="logo" />
     <nav>
@@ -59,8 +56,9 @@
       <textarea id="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p id="success-message" style="display: none; color: limegreen; text-align: center; margin-top: 10px;">
-      ✅ Your message has been sent successfully!
+
+    <p id="success-message" style="display: none; color: limegreen;">
+      Message sent successfully!
     </p>
   </section>
 
@@ -68,5 +66,49 @@
     <p>&copy; 2025 Future Inc. | CEO: Peter Anyangbe Asher</p>
   </footer>
 
+  <!-- EmailJS v4 (MODERN) -->
+  <script type="module">
+    import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+
+    emailjs.init("96U1EnA_8LsSvgwqN"); // 🔁 Replace with your actual public key
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      const successMessage = document.getElementById("success-message");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        emailjs
+          .send("service_u9lsmgp", "template_kpdwzwf", {
+            from_name: name,
+            reply_to: email,
+            message: message,
+          })
+          .then(
+            () => {
+              successMessage.style.display = "block";
+              form.reset();
+              setTimeout(() => {
+                successMessage.style.display = "none";
+              }, 5000);
+            },
+            (error) => {
+              alert("Failed to send message. Please try again later.");
+              console.error("EmailJS Error:", error);
+            }
+          );
+      });
+    });
+  </script>
 </body>
 </html>

@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official website of Future Inc." />
   <meta name="description" content="Future Inc. is a software development company founded by Peter Anyangbe Asher. Learn more about our services, skills, and how to contact us." />
-<meta name="keywords" content="Future Inc, Peter Asher, software developer, portfolio, HTML, CSS, JavaScript" />
-<meta name="author" content="Peter Anyangbe Asher" />
-  <link rel="icon" type="image/png" href="logo.png"/>
-  <title>Future Inc.</title>
-  <link rel="icon" href="logo.png" type="image/png" sizes="32x32" />
+  <meta name="keywords" content="Future Inc, Peter Asher, software developer, portfolio, HTML, CSS, JavaScript" />
+  <meta name="author" content="Peter Anyangbe Asher" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="styles.css" />
-   <script src="script.js"></script>
+  <title>Future Inc.</title>
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
+
   <header>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <img src="logo.png" alt="Future Inc. Logo" class="logo" />
     <nav>
       <ul>
@@ -56,24 +54,19 @@
   <section id="contact">
     <h2>Contact</h2>
     <form id="contact-form">
-      <form action="https://formsubmit.co/peteranyangbeasher.o@gmail.com" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message" required></textarea>
-
-  <!-- Optional settings -->
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_THANK YOU" value="https://asher-connects.github.io/future-inc/thank-you.html" />
-
-  <button type="submit">Send Message</button>
-</form>
-
-      
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
+    <p id="success-message" style="display: none; color: limegreen; text-align: center; margin-top: 10px;">
+      ✅ Your message has been sent successfully!
+    </p>
   </section>
 
   <footer>
     <p>&copy; 2025 Future Inc. | CEO: Peter Anyangbe Asher</p>
   </footer>
+
 </body>
 </html>

@@ -10,7 +10,11 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <!-- ✅ Load EmailJS SDK v3 BEFORE any script uses it -->
-  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+  <script
+  src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"
+  onload="emailjs.init('96U1EnA_8LsSvgwqN')"
+></script>
+
 </head>
 <body>
   <header>
@@ -70,8 +74,7 @@
   <!-- ✅ JavaScript for handling form submission and EmailJS -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      emailjs.init("96U1EnA_8LsSvgwqN"); // your public key
-
+      
       const form = document.getElementById("contact-form");
       const successMessage = document.getElementById("success-message");
 

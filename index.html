@@ -9,12 +9,11 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- ✅ Load EmailJS SDK v3 BEFORE any script uses it -->
+  <!-- ✅ Load EmailJS SDK (v3) and initialize after it loads -->
   <script
-  src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"
-  onload="emailjs.init('96U1EnA_8LsSvgwqN')"
-></script>
-
+    src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"
+    onload="emailjs.init('96U1EnA_8LsSvgwqN')"
+  ></script>
 </head>
 <body>
   <header>
@@ -58,7 +57,9 @@
     </form>
     <p id="success-message" style="display: none; color: limegreen;">Message sent successfully!</p>
   </section>
-   <p>
+
+  <!-- ✅ WhatsApp Contact Link -->
+  <div style="text-align: center; margin-top: 20px;">
     <a
       href="https://wa.me/2347074146794"
       target="_blank"
@@ -66,15 +67,15 @@
     >
       📱 Chat with us on WhatsApp
     </a>
-  </p>
+  </div>
+
   <footer>
     <p>&copy; 2025 Future Inc. | CEO: Peter Anyangbe Asher</p>
   </footer>
 
-  <!-- ✅ JavaScript for handling form submission and EmailJS -->
+  <!-- ✅ Form Handling Script (after SDK is loaded) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      
       const form = document.getElementById("contact-form");
       const successMessage = document.getElementById("success-message");
 
